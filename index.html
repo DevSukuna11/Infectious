@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infectious 🦠</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="particle.js"></script>
 </head>
-<body class="theme-emerald">
-    <div id="particles-container" class="particles-container"></div>
+<body class="theme-emerald bg-grid">
     <div class="container">
         <header>
+            <div class="browser-title">Infectious Browser🦠</div>
+            <div class="tabs-container"></div>
             <div class="nav-buttons">
-                <button class="nav-btn" onclick="goBack()">‹</button>
-                <button class="nav-btn" onclick="goForward()">›</button>
-                <button class="nav-btn" onclick="reload()">↻</button>
-                <button class="nav-btn" onclick="goHome()">⌂</button>
+                <button class="nav-btn" onclick="goBack()" title="Back">‹</button>
+                <button class="nav-btn" onclick="goForward()" title="Forward">›</button>
+                <button class="nav-btn" onclick="reload()" title="Reload">↻</button>
+                <button class="nav-btn" onclick="goHome()" title="Home">⌂</button>
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Infectious🦠://Search" onkeypress="handleSearch(event)">
             </div>
             <div class="icon-btns">
+                <button class="icon-btn" onclick="createTab('home.html')" title="New Tab">+</button>
                 <button class="icon-btn">⛶</button>
                 <button class="icon-btn">🧩</button>
-                <button class="icon-btn" onclick="openSettings()">⚙</button>
+                <button class="icon-btn" onclick="openSettings()" title="Settings">⚙</button>
             </div>
         </header>
         <div class="main-content" id="mainFrame"></div>

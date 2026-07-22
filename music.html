@@ -10,41 +10,25 @@
             background-color: #000;
             color: #00ff00;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            padding: 40px 20px;
+            padding: 20px;
         }
         .music-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             animation: popIn 0.5s ease-out;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         h1 {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-shadow: 0 0 15px #00ff00;
         }
-        .music-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-        .music-card {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,255,0,0.05) 100%);
+        .spotify-frame {
+            flex: 1;
             border: 2px solid #00ff00;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #00ff00;
-            font-size: 3rem;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
-        }
-        .music-card:hover {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(0,255,0,0.1) 100%);
-            box-shadow: 0 0 25px #00ff00;
-            transform: scale(1.05);
+            overflow: hidden;
         }
         @keyframes popIn {
             from {
@@ -60,14 +44,9 @@
 </head>
 <body>
     <div class="music-container">
-        <h1>🎧 Music</h1>
-        <div class="music-grid">
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎵</a>
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎶</a>
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎼</a>
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎹</a>
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎸</a>
-            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="music-card">🎤</a>
+        <h1>Infectious🦠 Music</h1>
+        <div class="spotify-frame">
+            <iframe src="https://open.spotify.com" style="width:100%; height:100%; border:none;"></iframe>
         </div>
     </div>
 </body>

@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
+    <title>Infectious 🦠 Movies</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: #000;
             color: #00ff00;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+        }
+        .movies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: popIn 0.5s ease-out;
+            height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            flex-direction: column;
         }
         h1 {
-            font-size: 4rem;
-            text-shadow: 0 0 30px #00ff00;
-            letter-spacing: 2px;
-            animation: popIn 0.5s ease-out;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px #00ff00;
+        }
+        .movies-frame {
+            flex: 1;
+            border: 2px solid #00ff00;
+            border-radius: 12px;
+            overflow: hidden;
         }
         @keyframes popIn {
             from {
@@ -34,6 +43,11 @@
     </style>
 </head>
 <body>
-    <h1>🦠 COMING SOON 🦠</h1>
+    <div class="movies-container">
+        <h1>Infectious🦠 Movies/TV Shows</h1>
+        <div class="movies-frame">
+            <iframe src="https://cineby.sc" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+    </div>
 </body>
 </html>
