@@ -5,40 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infectious 🦠 Music</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="music-styles.css">
+    <style>
+        .music-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 20px;
+        }
+        .music-controls {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .music-controls input {
+            flex: 1;
+            padding: 10px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--orange);
+            color: var(--neon-green);
+            border-radius: 8px;
+            outline: none;
+        }
+        .music-controls button {
+            padding: 10px 20px;
+            background-color: var(--orange);
+            border: none;
+            color: var(--black);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .music-controls button:hover {
+            background-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        .music-player {
+            width: 100%;
+            max-width: 900px;
+            height: 500px;
+            border: 2px solid var(--orange);
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="header-content">
-                <h1 class="title">Infectious 🦠</h1>
-                <button class="menu-toggle" id="menuToggle">🪛</button>
-            </div>
-            <nav class="dropdown-menu" id="dropdownMenu">
-                <a href="index.html" class="nav-item">Home 🏠</a>
-                <a href="games.html" class="nav-item">Games 🎮</a>
-                <a href="watch.html" class="nav-item">Watch ▶</a>
-                <a href="apps.html" class="nav-item">Apps 📱</a>
-                <a href="music.html" class="nav-item">Listen 🎧</a>
-                <a href="chat.html" class="nav-item">Chat 💬 <span class="badge">Coming Soon</span></a>
-                <a href="ai.html" class="nav-item">AI 🤖 <span class="badge">Coming Soon</span></a>
-                <a href="browse.html" class="nav-item">Browse 🌐</a>
-            </nav>
-        </header>
-        <main class="content">
-            <h2>Infectious 🦠 Music</h2>
-            <div class="music-player">
-                <div class="player-controls">
-                    <input type="text" id="searchInput" placeholder="Search music on SoundCloud..." class="search-box">
-                    <button id="searchBtn" class="btn">Search</button>
+        <div class="sidebar">
+            <div class="globe-icon">🌐</div>
+        </div>
+        <div class="main-content">
+            <header>
+                <div class="nav-bar">
+                    <button class="nav-btn">‹</button>
+                    <button class="nav-btn">›</button>
+                    <button class="nav-btn">⟳</button>
+                    <button class="nav-btn">⌂</button>
                 </div>
-                <div class="player-frame">
-                    <iframe id="soundcloudFrame" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>
+                <div class="url-bar">
+                    <input type="text" placeholder="Search or enter URL">
                 </div>
-            </div>
-        </main>
+                <div class="nav-icons">
+                    <button class="icon-btn">⛶</button>
+                    <button class="icon-btn">🧩</button>
+                    <button class="settings-btn" id="settingsBtn">⚙</button>
+                </div>
+            </header>
+            <main class="music-container">
+                <div class="music-controls">
+                    <input type="text" id="searchInput" placeholder="Search music...">
+                    <button id="searchBtn">Search</button>
+                </div>
+                <div class="music-player">
+                    <iframe id="musicFrame" width="100%" height="100%" frameborder="0" allow="autoplay"></iframe>
+                </div>
+            </main>
+        </div>
     </div>
     <script src="script.js"></script>
-    <script src="music-script.js"></script>
+    <script>
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                const url = `https://open.spotify.com/embed/search/${encodeURIComponent(query)}`;
+                document.getElementById('musicFrame').src = url;
+            }
+        });
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('searchBtn').click();
+        });
+    </script>
 </body>
 </html>

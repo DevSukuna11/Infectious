@@ -5,60 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infectious 🦠 Browse</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="browse-styles.css">
+    <style>
+        .browse-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+        }
+        .browse-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .browse-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--orange);
+            color: var(--neon-green);
+            border-radius: 8px;
+            outline: none;
+        }
+        .browse-btn {
+            padding: 10px 20px;
+            background-color: var(--orange);
+            border: none;
+            color: var(--black);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .browse-btn:hover {
+            background-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        .browse-frame {
+            flex: 1;
+            border: 2px solid var(--orange);
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: white;
+        }
+        .browse-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="header-content">
-                <h1 class="title">Infectious 🦠</h1>
-                <button class="menu-toggle" id="menuToggle">🪛</button>
-            </div>
-            <nav class="dropdown-menu" id="dropdownMenu">
-                <a href="index.html" class="nav-item">Home 🏠</a>
-                <a href="games.html" class="nav-item">Games 🎮</a>
-                <a href="watch.html" class="nav-item">Watch ▶</a>
-                <a href="apps.html" class="nav-item">Apps 📱</a>
-                <a href="music.html" class="nav-item">Listen 🎧</a>
-                <a href="chat.html" class="nav-item">Chat 💬 <span class="badge">Coming Soon</span></a>
-                <a href="ai.html" class="nav-item">AI 🤖 <span class="badge">Coming Soon</span></a>
-                <a href="browse.html" class="nav-item">Browse 🌐</a>
-            </nav>
-        </header>
-        <main class="content">
-            <h2>Infectious 🦠 Browse</h2>
-            <div class="browser-controls">
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search with DuckDuckGo" class="search-input">
-                    <button id="searchBtn" class="btn">Search</button>
+        <div class="sidebar">
+            <div class="globe-icon">🌐</div>
+        </div>
+        <div class="main-content">
+            <header>
+                <div class="nav-bar">
+                    <button class="nav-btn">‹</button>
+                    <button class="nav-btn">›</button>
+                    <button class="nav-btn">⟳</button>
+                    <button class="nav-btn">⌂</button>
                 </div>
-                <button id="newTabBtn" class="btn">New Tab +</button>
-                <button id="addShortcutBtn" class="btn">Add Shortcut +</button>
-            </div>
-            <div class="tabs-container">
-                <div class="tabs" id="tabsList"></div>
-            </div>
-            <div class="shortcuts-container">
-                <div id="shortcuts" class="shortcuts"></div>
-            </div>
-            <div class="iframe-container">
-                <iframe id="browserFrame" src=""></iframe>
-            </div>
-        </main>
-    </div>
-    <div id="shortcutModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Add Shortcut</h3>
-            <form id="shortcutForm">
-                <input type="text" id="shortcutName" placeholder="Shortcut Name" required>
-                <input type="url" id="shortcutURL" placeholder="URL" required>
-                <input type="url" id="shortcutImage" placeholder="Image URL (optional)">
-                <button type="submit" class="btn">Add</button>
-            </form>
+                <div class="url-bar">
+                    <input type="text" placeholder="Search or enter URL" id="urlInput">
+                </div>
+                <div class="nav-icons">
+                    <button class="icon-btn">⛶</button>
+                    <button class="icon-btn">🧩</button>
+                    <button class="settings-btn" id="settingsBtn">⚙</button>
+                </div>
+            </header>
+            <main class="browse-container">
+                <div class="browse-controls">
+                    <input type="text" id="searchInput" class="browse-input" placeholder="Search with DuckDuckGo...">
+                    <button class="browse-btn" id="searchBtn">Search</button>
+                    <button class="browse-btn" id="addShortcutBtn">Add Shortcut +</button>
+                </div>
+                <div class="browse-frame">
+                    <iframe id="browseFrame"></iframe>
+                </div>
+            </main>
         </div>
     </div>
+
+    <div id="shortcutModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: var(--black); border: 2px solid var(--orange); border-radius: 12px; padding: 30px; width: 90%; max-width: 400px;">
+            <h2 style="color: var(--orange); margin-bottom: 20px;">Add Shortcut</h2>
+            <input type="text" id="shortcutName" placeholder="Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: 1px solid var(--orange); color: var(--neon-green); border-radius: 6px;">
+            <input type="url" id="shortcutURL" placeholder="URL" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(255,255,255,0.1); border: 1px solid var(--orange); color: var(--neon-green); border-radius: 6px;">
+            <input type="url" id="shortcutImage" placeholder="Image URL (optional)" style="width: 100%; padding: 10px; margin-bottom: 20px; background: rgba(255,255,255,0.1); border: 1px solid var(--orange); color: var(--neon-green); border-radius: 6px;">
+            <div style="display: flex; gap: 10px;">
+                <button id="addBtn" class="browse-btn" style="flex: 1;">Add</button>
+                <button id="closeModal" class="browse-btn" style="flex: 1; background: rgba(255,255,255,0.1); color: var(--orange);">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script src="browse-script.js"></script>
+    <script>
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const query = document.getElementById('searchInput').value;
+            if (query) {
+                document.getElementById('browseFrame').src = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
+            }
+        });
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') document.getElementById('searchBtn').click();
+        });
+        document.getElementById('addShortcutBtn').addEventListener('click', function() {
+            document.getElementById('shortcutModal').style.display = 'flex';
+        });
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('shortcutModal').style.display = 'none';
+        });
+        document.getElementById('addBtn').addEventListener('click', function() {
+            const name = document.getElementById('shortcutName').value;
+            const url = document.getElementById('shortcutURL').value;
+            if (name && url) {
+                let shortcuts = JSON.parse(localStorage.getItem('shortcuts') || '[]');
+                shortcuts.push({name, url, image: document.getElementById('shortcutImage').value});
+                localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                document.getElementById('shortcutModal').style.display = 'none';
+                alert('Shortcut added!');
+            }
+        });
+    </script>
 </body>
 </html>
