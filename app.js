@@ -23,7 +23,7 @@ function initializeTheme() {
     
     document.body.className = `theme-${savedTheme}`;
     if (savedBg) {
-        document.body.style.backgroundImage = `url('${savedBg}');
+        document.body.style.backgroundImage = `url('${savedBg}')`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundAttachment = 'fixed';
     }
@@ -33,7 +33,11 @@ function toggleMenu() {
     menuPanel.classList.toggle('active');
 }
 
-menuToggle.addEventListener('click', toggleMenu);
+// Menu toggle event listener - FIXED
+menuToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleMenu();
+});
 
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.floating-menu')) {
@@ -98,6 +102,7 @@ function openSettings() {
     loadPage('settings.html');
 }
 
+// Initialize on page load - FIXED
 window.addEventListener('load', () => {
     initializeTheme();
     goHome();
