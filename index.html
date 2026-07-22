@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="particle.js"></script>
 </head>
-<body class="theme-emerald bg-grid">
-    <div class="container">
+<body class="theme-emerald">
+    <div class="container" style="display:none;" id="browserContainer">
         <header>
             <div class="browser-title">Infectious Browser🦠</div>
             <div class="tabs-container"></div>
@@ -22,13 +22,17 @@
                 <input type="text" id="searchInput" placeholder="Infectious🦠://Search" onkeypress="handleSearch(event)">
             </div>
             <div class="icon-btns">
-                <button class="icon-btn" onclick="createTab('home.html')" title="New Tab">+</button>
+                <button class="icon-btn" onclick="createTab('home.html', 'Infectious🦠__NewTab')" title="New Tab">+</button>
                 <button class="icon-btn">⛶</button>
                 <button class="icon-btn">🧩</button>
                 <button class="icon-btn" onclick="openSettings()" title="Settings">⚙</button>
             </div>
         </header>
         <div class="main-content" id="mainFrame"></div>
+    </div>
+
+    <div id="homePage" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:20;">
+        <!-- Home page content loaded here -->
     </div>
 
     <div class="floating-menu">
@@ -43,9 +47,35 @@
             <button class="menu-item" onclick="navigateTo('chat')">💬 Chat</button>
             <button class="menu-item" onclick="navigateTo('ai')">🤖 AI</button>
             <button class="menu-item" onclick="navigateTo('browse')">🌐 Browse</button>
+            <div class="menu-separator"></div>
+            <button class="menu-item" onclick="openDonate()" style="color:#ff00ff; font-weight:600;">💝 Donate</button>
         </div>
     </div>
 
     <script src="app.js"></script>
+    <script>
+        // Load home page on startup
+        window.addEventListener('load', () => {
+            fetch('home.html')
+                .then(r => r.text())
+                .then(html => {
+                    document.getElementById('homePage').innerHTML = html;
+                    document.getElementById('browserContainer').style.display = 'none';
+                });
+        });
+
+        function openDonate() {
+            window.open('https://cash.app/$TextmeElisha', '_blank');
+            menuPanel.classList.remove('active');
+        }
+
+        // When menu item is clicked, show browser and navigate
+        const originalNavigateTo = navigateTo;
+        navigateTo = function(page) {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('browserContainer').style.display = 'flex';
+            originalNavigateTo(page);
+        };
+    </script>
 </body>
 </html>

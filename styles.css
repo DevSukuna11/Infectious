@@ -30,7 +30,7 @@ body.theme-teal { --primary: #00ffff; --primary-dark: #00cccc; }
 body.theme-indigo { --primary: #4169e1; --primary-dark: #3a5bc7; }
 body.theme-fuchsia { --primary: #ff00ff; --primary-dark: #cc00cc; }
 
-/* Background patterns */
+/* Background patterns - ONLY apply when explicitly set */
 body.bg-grid::before {
     content: '';
     position: fixed;
@@ -318,6 +318,13 @@ iframe {
 .menu-item:hover {
     background-color: rgba(255, 255, 255, 0.1);
     padding-left: 20px;
+}
+
+.menu-separator {
+    height: 1px;
+    background-color: var(--primary);
+    opacity: 0.3;
+    margin: 5px 0;
 }
 
 .particles-container {

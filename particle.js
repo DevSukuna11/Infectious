@@ -4,6 +4,7 @@ class ParticleSystem {
         this.container = null;
         this.animationId = null;
         this.config = null;
+        this.spawnInterval = null;
     }
 
     async init() {
@@ -34,21 +35,19 @@ class ParticleSystem {
 
         const speed = particleConfig.speed === 'slow' ? 8 : particleConfig.speed === 'fast' ? 3 : 5;
         
-        // Create initial batch
-        for (let i = 0; i < 50; i++) {
+        // Create initial batch - MORE particles at once
+        for (let i = 0; i < 80; i++) {
             this.createParticle(particleConfig, speed, Math.random() * 0.5);
         }
         
         // Continuous spawn
-        if (this.animationId) cancelAnimationFrame(this.animationId);
+        if (this.spawnInterval) clearInterval(this.spawnInterval);
         
-        const spawnInterval = setInterval(() => {
-            if (this.particles.length < 50) {
+        this.spawnInterval = setInterval(() => {
+            if (this.particles.length < 80) {
                 this.createParticle(particleConfig, speed, 0);
             }
-        }, 500);
-        
-        window.addEventListener('beforeunload', () => clearInterval(spawnInterval));
+        }, 300);
     }
 
     createParticle(config, speed, delay) {
@@ -74,6 +73,7 @@ class ParticleSystem {
     clearParticles() {
         this.particles.forEach(p => p.remove());
         this.particles = [];
+        if (this.spawnInterval) clearInterval(this.spawnInterval);
     }
 
     destroy() {
@@ -87,9 +87,8 @@ const particleSystem = new ParticleSystem();
 
 window.addEventListener('load', async () => {
     await particleSystem.init();
-    const savedParticles = localStorage.getItem('particles') || 'snowdots';
-    const particlesEnabled = localStorage.getItem('particlesEnabled') !== 'false';
-    if (particlesEnabled) {
+    const savedParticles = localStorage.getItem('particles') || 'off';
+    if (savedParticles !== 'off') {
         particleSystem.start(savedParticles);
     }
 });

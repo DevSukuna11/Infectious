@@ -1,6 +1,6 @@
 let themesData = {};
 let currentTheme = localStorage.getItem('theme') || 'emerald';
-let currentBackgroundPattern = localStorage.getItem('bgPattern') || 'grid';
+let currentBackgroundPattern = localStorage.getItem('bgPattern') || 'none';
 
 const menuToggle = document.getElementById('menuToggle');
 const menuPanel = document.getElementById('menuPanel');
@@ -30,9 +30,8 @@ function applyTheme(theme) {
     
     // Restart particles with new theme
     if (particleSystem) {
-        const savedParticles = localStorage.getItem('particles') || 'snowdots';
-        const particlesEnabled = localStorage.getItem('particlesEnabled') !== 'false';
-        if (particlesEnabled) {
+        const savedParticles = localStorage.getItem('particles') || 'off';
+        if (savedParticles !== 'off') {
             particleSystem.start(savedParticles);
         }
     }
@@ -47,7 +46,7 @@ function applyBackgroundPattern(pattern) {
 function initializeTheme() {
     const savedTheme = localStorage.getItem('theme') || themesData.defaultTheme || 'emerald';
     const savedBg = localStorage.getItem('background') || '';
-    const savedPattern = localStorage.getItem('bgPattern') || 'grid';
+    const savedPattern = localStorage.getItem('bgPattern') || 'none';
     
     document.body.className = `theme-${savedTheme} bg-${savedPattern}`;
     
@@ -87,18 +86,21 @@ function navigateTo(page) {
         browse: 'browse.html'
     };
     
+    const pageName = page.charAt(0).toUpperCase() + page.slice(1);
     const url = pages[page];
     if (url) {
-        loadPage(url);
+        createTab(url, `Infectious🦠__${pageName}`);
         menuPanel.classList.remove('active');
     }
 }
 
-function createTab(url) {
+function createTab(url, name = null) {
     const tabId = tabCounter++;
+    const tabName = name || `Infectious🦠__Tab${tabId}`;
     const tab = {
         id: tabId,
         url: url,
+        name: tabName,
         history: [url],
         historyIndex: 0
     };
@@ -114,7 +116,7 @@ function renderTabs() {
         const tabElement = document.createElement('div');
         tabElement.className = `tab ${tab.id === activeTabId ? 'active' : ''}`;
         tabElement.innerHTML = `
-            <span onclick="switchTab(${tab.id})">Infectious🦠 Tab ${tabs.indexOf(tab) + 1}</span>
+            <span onclick="switchTab(${tab.id})">${tab.name}</span>
             <span class="tab-close" onclick="closeTab(${tab.id})">×</span>
         `;
         tabsContainer.appendChild(tabElement);
@@ -145,12 +147,8 @@ function closeTab(tabId) {
 }
 
 function loadPageInTab(tab) {
-    const proxyUrl = tab.url.startsWith('http') 
-        ? `proxy.html?url=${encodeURIComponent(tab.url)}`
-        : `proxy.html?url=${encodeURIComponent(tab.url)}`;
-    
-    mainFrame.innerHTML = `<iframe src="${proxyUrl}" style="width:100%; height:100%; border:none;"></iframe>`;
-    searchInput.value = tab.url.startsWith('http') ? tab.url : 'Infectious🦠://NewTab';
+    mainFrame.innerHTML = `<div class="loading-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(135deg, rgba(0,0,0,0.9), rgba(0,0,0,0.8)); display:flex; align-items:center; justify-content:center; z-index:100; flex-direction:column; gap:20px;"><div style="font-size:3rem; animation:spin 2s infinite;">🦠</div><div style="color:var(--primary); font-size:1.2rem; text-shadow:0 0 10px var(--primary);">Infectious🦠... loading</div></div><iframe src="${tab.url}" style="width:100%; height:100%; border:none; position:absolute; top:0; left:0;" onload="this.previousElementSibling.style.display='none';"></iframe>`;
+    searchInput.value = tab.url.startsWith('http') ? tab.url : 'Infectious🦠://Home';
 }
 
 function loadPage(url) {
@@ -192,7 +190,7 @@ function reload() {
 }
 
 function goHome() {
-    loadPage('home.html');
+    createTab('home.html', 'Infectious🦠__Home');
 }
 
 function handleSearch(event) {
@@ -206,11 +204,11 @@ function handleSearch(event) {
 }
 
 function openSettings() {
-    loadPage('settings.html');
+    createTab('settings.html', 'Infectious🦠__Settings');
 }
 
 window.addEventListener('load', async () => {
     await loadThemes();
     initializeTheme();
-    createTab('home.html');
+    createTab('home.html', 'Infectious🦠__Home');
 });
