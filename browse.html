@@ -4,53 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infectious 🦠 Browse</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+        }
         .browse-container {
-            flex: 1;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            padding: 20px;
+            height: 100vh;
         }
-        .browse-controls {
+        .controls {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
         }
-        .browse-input {
+        input {
             flex: 1;
-            min-width: 250px;
-            padding: 10px 16px;
+            padding: 10px 12px;
             background-color: rgba(0, 255, 0, 0.05);
-            border: 2px solid var(--neon-green);
-            color: var(--neon-green);
-            border-radius: 8px;
-            outline: none;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            border-radius: 6px;
+            font-size: 0.9rem;
         }
-        .browse-btn {
+        button {
             padding: 10px 20px;
-            background-color: var(--black);
-            border: 2px solid var(--neon-green);
-            color: var(--neon-green);
-            border-radius: 8px;
+            background-color: transparent;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
             transition: all 0.3s ease;
         }
-        .browse-btn:hover {
-            background-color: var(--neon-green);
-            color: var(--black);
-            box-shadow: 0 0 15px var(--neon-green);
+        button:hover {
+            background-color: #00ff00;
+            color: #000;
         }
-        .browse-frame {
+        .iframe-container {
             flex: 1;
-            border: 2px solid var(--neon-green);
-            border-radius: 12px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
             overflow: hidden;
-            background-color: white;
         }
-        .browse-frame iframe {
+        iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -58,116 +58,24 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <a href="index.html" class="menu-icon return-btn">🔙</a>
-            <div class="menu-panel">
-                <div class="menu-title">Infectious 🦠</div>
-                <a href="index.html" class="menu-item">🏠 Home</a>
-                <a href="games.html" class="menu-item">🎮 Games</a>
-                <a href="watch.html" class="menu-item">▶ Watch</a>
-                <a href="apps.html" class="menu-item">📱 Apps</a>
-                <a href="music.html" class="menu-item">🎧 Music</a>
-                <a href="chat.html" class="menu-item">💬 Chat</a>
-                <a href="ai.html" class="menu-item">🤖 AI</a>
-                <a href="browse.html" class="menu-item">🌐 Browse</a>
-            </div>
+    <div class="browse-container">
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search with DuckDuckGo...">
+            <button onclick="search()">Search</button>
         </div>
-        <div class="main-content">
-            <header>
-                <div class="nav-bar">
-                    <button class="nav-btn">‹</button>
-                    <button class="nav-btn">›</button>
-                    <button class="nav-btn">🔄</button>
-                    <button class="nav-btn">⌂</button>
-                </div>
-                <div class="url-bar">
-                    <input type="text" placeholder="Search or enter URL" id="urlInput">
-                </div>
-                <div class="nav-icons">
-                    <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🎚</button>
-                    <button class="settings-btn" id="settingsBtn">⚙</button>
-                </div>
-            </header>
-            <main class="browse-container">
-                <div class="browse-controls">
-                    <input type="text" id="searchInput" class="browse-input" placeholder="Search with DuckDuckGo...">
-                    <button class="browse-btn" id="searchBtn">Search</button>
-                    <button class="browse-btn" id="addShortcutBtn">Add Shortcut +</button>
-                </div>
-                <div class="browse-frame">
-                    <iframe id="browseFrame"></iframe>
-                </div>
-            </main>
+        <div class="iframe-container">
+            <iframe id="browseFrame"></iframe>
         </div>
     </div>
-
-    <div id="shortcutModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
-        <div style="background: var(--black); border: 2px solid var(--neon-green); border-radius: 12px; padding: 30px; width: 90%; max-width: 400px; box-shadow: 0 0 30px var(--neon-green);">
-            <h2 style="color: var(--neon-green); margin-bottom: 20px; text-shadow: 0 0 15px var(--neon-green);">Add Shortcut</h2>
-            <input type="text" id="shortcutName" placeholder="Name" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,255,0,0.05); border: 1px solid var(--neon-green); color: var(--neon-green); border-radius: 6px;">
-            <input type="url" id="shortcutURL" placeholder="URL" style="width: 100%; padding: 10px; margin-bottom: 10px; background: rgba(0,255,0,0.05); border: 1px solid var(--neon-green); color: var(--neon-green); border-radius: 6px;">
-            <input type="url" id="shortcutImage" placeholder="Image URL (optional)" style="width: 100%; padding: 10px; margin-bottom: 20px; background: rgba(0,255,0,0.05); border: 1px solid var(--neon-green); color: var(--neon-green); border-radius: 6px;">
-            <div style="display: flex; gap: 10px;">
-                <button id="addBtn" class="browse-btn" style="flex: 1;">Add</button>
-                <button id="closeModal" class="browse-btn" style="flex: 1;">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="settingsPanel" class="settings-panel">
-        <div class="settings-content">
-            <h2>Infectious 🦠 Settings</h2>
-            <div class="settings-options">
-                <div class="setting-item">
-                    <label>Theme</label>
-                    <select>
-                        <option>Neon Green</option>
-                        <option>Neon Blue</option>
-                        <option>Neon Purple</option>
-                    </select>
-                </div>
-                <div class="setting-item">
-                    <label>Homepage</label>
-                    <input type="text" value="https://infectious.local">
-                </div>
-                <div class="setting-item">
-                    <label>Clear Browsing Data</label>
-                    <button class="btn-settings">Clear</button>
-                </div>
-            </div>
-            <button id="closeSettings" class="close-btn">✕</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
     <script>
-        document.getElementById('searchBtn').addEventListener('click', function() {
+        function search() {
             const query = document.getElementById('searchInput').value;
             if (query) {
                 document.getElementById('browseFrame').src = `https://duckduckgo.com/?q=${encodeURIComponent(query)}`;
             }
-        });
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') document.getElementById('searchBtn').click();
-        });
-        document.getElementById('addShortcutBtn').addEventListener('click', function() {
-            document.getElementById('shortcutModal').style.display = 'flex';
-        });
-        document.getElementById('closeModal').addEventListener('click', function() {
-            document.getElementById('shortcutModal').style.display = 'none';
-        });
-        document.getElementById('addBtn').addEventListener('click', function() {
-            const name = document.getElementById('shortcutName').value;
-            const url = document.getElementById('shortcutURL').value;
-            if (name && url) {
-                let shortcuts = JSON.parse(localStorage.getItem('shortcuts') || '[]');
-                shortcuts.push({name, url, image: document.getElementById('shortcutImage').value});
-                localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
-                document.getElementById('shortcutModal').style.display = 'none';
-                alert('Shortcut added!');
-            }
+        }
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') search();
         });
     </script>
 </body>

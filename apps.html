@@ -4,106 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infectious 🦠 Apps</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 40px 20px;
+        }
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            padding: 40px 20px;
-            width: 100%;
+            gap: 20px;
             max-width: 1200px;
+            margin: 0 auto;
         }
         .app-card {
             aspect-ratio: 1;
             background-color: rgba(0, 255, 0, 0.05);
-            border: 2px solid var(--neon-green);
+            border: 2px solid #00ff00;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 3.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 4rem;
             text-decoration: none;
-            color: var(--neon-green);
+            color: #00ff00;
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
         .app-card:hover {
             background-color: rgba(0, 255, 0, 0.15);
-            box-shadow: 0 0 25px var(--neon-green);
+            box-shadow: 0 0 25px #00ff00;
             transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <a href="index.html" class="menu-icon return-btn">🔙</a>
-            <div class="menu-panel">
-                <div class="menu-title">Infectious 🦠</div>
-                <a href="index.html" class="menu-item">🏠 Home</a>
-                <a href="games.html" class="menu-item">🎮 Games</a>
-                <a href="watch.html" class="menu-item">▶ Watch</a>
-                <a href="apps.html" class="menu-item">📱 Apps</a>
-                <a href="music.html" class="menu-item">🎧 Music</a>
-                <a href="chat.html" class="menu-item">💬 Chat</a>
-                <a href="ai.html" class="menu-item">🤖 AI</a>
-                <a href="browse.html" class="menu-item">🌐 Browse</a>
-            </div>
-        </div>
-        <div class="main-content">
-            <header>
-                <div class="nav-bar">
-                    <button class="nav-btn">‹</button>
-                    <button class="nav-btn">›</button>
-                    <button class="nav-btn">🔄</button>
-                    <button class="nav-btn">⌂</button>
-                </div>
-                <div class="url-bar">
-                    <input type="text" placeholder="Search or enter URL">
-                </div>
-                <div class="nav-icons">
-                    <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🎚</button>
-                    <button class="settings-btn" id="settingsBtn">⚙</button>
-                </div>
-            </header>
-            <main class="home-page">
-                <div class="apps-grid">
-                    <a href="https://github.com" target="_blank" class="app-card">🐙</a>
-                    <a href="https://instagram.com" target="_blank" class="app-card">📷</a>
-                    <a href="https://twitter.com" target="_blank" class="app-card">𝕏</a>
-                    <a href="https://snapchat.com" target="_blank" class="app-card">👻</a>
-                    <a href="https://discord.com" target="_blank" class="app-card">💬</a>
-                </div>
-            </main>
-        </div>
+    <div class="apps-grid">
+        <a href="https://github.com" target="_blank" class="app-card">🐙</a>
+        <a href="https://instagram.com" target="_blank" class="app-card">📷</a>
+        <a href="https://twitter.com" target="_blank" class="app-card">𝕏</a>
+        <a href="https://snapchat.com" target="_blank" class="app-card">👻</a>
+        <a href="https://discord.com" target="_blank" class="app-card">💬</a>
     </div>
-    <div id="settingsPanel" class="settings-panel">
-        <div class="settings-content">
-            <h2>Infectious 🦠 Settings</h2>
-            <div class="settings-options">
-                <div class="setting-item">
-                    <label>Theme</label>
-                    <select>
-                        <option>Neon Green</option>
-                        <option>Neon Blue</option>
-                        <option>Neon Purple</option>
-                    </select>
-                </div>
-                <div class="setting-item">
-                    <label>Homepage</label>
-                    <input type="text" value="https://infectious.local">
-                </div>
-                <div class="setting-item">
-                    <label>Clear Browsing Data</label>
-                    <button class="btn-settings">Clear</button>
-                </div>
-            </div>
-            <button id="closeSettings" class="close-btn">✕</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
 </body>
 </html>

@@ -6,103 +6,44 @@
     <title>Infectious 🦠</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme-emerald">
     <div class="container">
-        <div class="sidebar">
-            <div class="menu-icon">🪛</div>
-            <div class="menu-panel">
-                <div class="menu-title">Infectious 🦠</div>
-                <a href="index.html" class="menu-item">🏠 Home</a>
-                <a href="games.html" class="menu-item">🎮 Games</a>
-                <a href="watch.html" class="menu-item">▶ Watch</a>
-                <a href="apps.html" class="menu-item">📱 Apps</a>
-                <a href="music.html" class="menu-item">🎧 Music</a>
-                <a href="chat.html" class="menu-item">💬 Chat</a>
-                <a href="ai.html" class="menu-item">🤖 AI</a>
-                <a href="browse.html" class="menu-item">🌐 Browse</a>
+        <header>
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="goBack()">‹</button>
+                <button class="nav-btn" onclick="goForward()">›</button>
+                <button class="nav-btn" onclick="reload()">↻</button>
+                <button class="nav-btn" onclick="goHome()">⌂</button>
             </div>
-        </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Infectious🦠://NewTAB" onkeypress="handleSearch(event)">
+            </div>
+            <div class="icon-btns">
+                <button class="icon-btn">⛶</button>
+                <button class="icon-btn">🧩</button>
+                <button class="icon-btn" onclick="openSettings()">⚙</button>
+            </div>
+        </header>
         <div class="main-content">
-            <header>
-                <div class="nav-bar">
-                    <button class="nav-btn">‹</button>
-                    <button class="nav-btn">›</button>
-                    <button class="nav-btn">🔄</button>
-                    <button class="nav-btn">⌂</button>
-                </div>
-                <div class="url-bar">
-                    <input type="text" placeholder="Search or enter URL">
-                </div>
-                <div class="nav-icons">
-                    <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🎚</button>
-                    <button class="settings-btn" id="settingsBtn">⚙</button>
-                </div>
-            </header>
-            <main class="home-page">
-                <div class="logo-section">
-                    <h1>Infectious 🦠</h1>
-                </div>
-                <div class="search-section">
-                    <div class="search-box">
-                        <span class="search-icon">🔍</span>
-                        <input type="text" placeholder="Search or enter URL..." id="mainSearch">
-                    </div>
-                </div>
-                <div class="shortcuts-section">
-                    <a href="https://www.youtube.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">▶</div>
-                        <div class="shortcut-label">youtube</div>
-                    </a>
-                    <a href="https://github.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">🐙</div>
-                        <div class="shortcut-label">github</div>
-                    </a>
-                    <a href="https://discord.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">💬</div>
-                        <div class="shortcut-label">discord</div>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">𝕏</div>
-                        <div class="shortcut-label">twitter</div>
-                    </a>
-                    <a href="https://reddit.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">🔴</div>
-                        <div class="shortcut-label">reddit</div>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">📷</div>
-                        <div class="shortcut-label">instagram</div>
-                    </a>
-                </div>
-            </main>
+            <iframe id="mainFrame" src="about:blank"></iframe>
         </div>
     </div>
 
-    <div id="settingsPanel" class="settings-panel">
-        <div class="settings-content">
-            <h2>Infectious 🦠 Settings</h2>
-            <div class="settings-options">
-                <div class="setting-item">
-                    <label>Theme</label>
-                    <select>
-                        <option>Neon Green</option>
-                        <option>Neon Blue</option>
-                        <option>Neon Purple</option>
-                    </select>
-                </div>
-                <div class="setting-item">
-                    <label>Homepage</label>
-                    <input type="text" value="https://infectious.local">
-                </div>
-                <div class="setting-item">
-                    <label>Clear Browsing Data</label>
-                    <button class="btn-settings">Clear</button>
-                </div>
-            </div>
-            <button id="closeSettings" class="close-btn">✕</button>
+    <div class="floating-menu">
+        <button class="menu-toggle" id="menuToggle">🦠</button>
+        <div class="menu-panel" id="menuPanel">
+            <div class="menu-title">Infectious 🦠</div>
+            <button class="menu-item" onclick="navigateTo('home')">🏠 Home</button>
+            <button class="menu-item" onclick="navigateTo('games')">🎮 Games</button>
+            <button class="menu-item" onclick="navigateTo('watch')">▶ Watch</button>
+            <button class="menu-item" onclick="navigateTo('apps')">📱 Apps</button>
+            <button class="menu-item" onclick="navigateTo('music')">🎧 Music</button>
+            <button class="menu-item" onclick="navigateTo('chat')">💬 Chat</button>
+            <button class="menu-item" onclick="navigateTo('ai')">🤖 AI</button>
+            <button class="menu-item" onclick="navigateTo('browse')">🌐 Browse</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="app.js"></script>
 </body>
 </html>
