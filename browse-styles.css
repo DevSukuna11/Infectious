@@ -1,0 +1,202 @@
+.browser-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px;
+    background-color: var(--black);
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+.search-input::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.tabs-container {
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--neon-green);
+    padding-bottom: 10px;
+}
+
+.tab {
+    padding: 8px 15px;
+    background-color: rgba(0, 255, 0, 0.1);
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.tab.active {
+    background-color: var(--neon-green);
+    color: var(--black);
+}
+
+.tab-close {
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+
+.tab-close:hover {
+    color: red;
+}
+
+.shortcuts-container {
+    margin-bottom: 20px;
+}
+
+.shortcuts {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 100px;
+    background-color: rgba(0, 255, 0, 0.05);
+    border: 2px solid var(--neon-green);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--neon-green);
+}
+
+.shortcut:hover {
+    background-color: rgba(0, 255, 0, 0.15);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.shortcut-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.shortcut-text {
+    font-size: 0.7rem;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.iframe-container {
+    border: 2px solid var(--neon-green);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+    height: 600px;
+}
+
+#browserFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    background-color: var(--black);
+    margin: 10% auto;
+    padding: 30px;
+    border: 2px solid var(--neon-green);
+    width: 90%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.modal-content h3 {
+    color: var(--neon-green);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.close {
+    color: var(--neon-green);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: red;
+}
+
+#shortcutForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#shortcutForm input {
+    padding: 12px;
+    background-color: var(--black);
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+#shortcutForm input::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+#shortcutForm input:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+#shortcutForm .btn {
+    margin-top: 10px;
+}

@@ -1,0 +1,41 @@
+.music-player {
+    margin-top: 40px;
+}
+
+.player-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px;
+    background-color: var(--black);
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+}
+
+.search-box::placeholder {
+    color: rgba(0, 255, 0, 0.5);
+}
+
+.search-box:focus {
+    outline: none;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+#searchBtn {
+    padding: 12px 30px;
+}
+
+.player-frame {
+    border: 2px solid var(--neon-green);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: rgba(0, 255, 0, 0.05);
+}
