@@ -63,6 +63,7 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            margin-bottom: 30px;
         }
         .bg-upload input {
             flex: 1;
@@ -105,6 +106,23 @@
             background-color: #00ff00;
             color: #000;
         }
+        .save-btn {
+            padding: 15px 40px;
+            background-color: transparent;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+        }
+        .save-btn:hover {
+            background-color: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px #00ff00;
+        }
     </style>
 </head>
 <body>
@@ -113,68 +131,87 @@
         
         <div class="section">
             <h2>🎨 Color Theme</h2>
-            <p style="margin-bottom: 20px; color: rgba(0, 255, 0, 0.7);">Pick a color theme — it applies across every page and syncs to your account.</p>
             <div class="themes-grid">
-                <div class="theme-option active" onclick="setTheme('amber')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ffb000 100%);"></div>Amber</div>
-                <div class="theme-option" onclick="setTheme('cyan')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00d4ff 100%);"></div>Cyan</div>
-                <div class="theme-option" onclick="setTheme('violet')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #b000ff 100%);"></div>Violet</div>
-                <div class="theme-option" onclick="setTheme('emerald')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00ff7f 100%);"></div>Emerald</div>
-                <div class="theme-option" onclick="setTheme('rose')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff1493 100%);"></div>Rose</div>
-                <div class="theme-option" onclick="setTheme('slate')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #c0c0c0 100%);"></div>Slate</div>
-                <div class="theme-option" onclick="setTheme('crimson')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff0000 100%);"></div>Crimson</div>
-                <div class="theme-option" onclick="setTheme('teal')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00ffff 100%);"></div>Teal</div>
-                <div class="theme-option" onclick="setTheme('indigo')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #4169e1 100%);"></div>Indigo</div>
-                <div class="theme-option" onclick="setTheme('fuchsia')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff00ff 100%);"></div>Fuchsia</div>
+                <div class="theme-option" onclick="selectTheme('amber')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ffb000 100%);"></div>Amber</div>
+                <div class="theme-option" onclick="selectTheme('cyan')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00d4ff 100%);"></div>Cyan</div>
+                <div class="theme-option" onclick="selectTheme('violet')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #b000ff 100%);"></div>Violet</div>
+                <div class="theme-option" onclick="selectTheme('emerald')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00ff7f 100%);"></div>Emerald</div>
+                <div class="theme-option" onclick="selectTheme('rose')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff1493 100%);"></div>Rose</div>
+                <div class="theme-option" onclick="selectTheme('slate')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #c0c0c0 100%);"></div>Slate</div>
+                <div class="theme-option" onclick="selectTheme('crimson')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff0000 100%);"></div>Crimson</div>
+                <div class="theme-option" onclick="selectTheme('teal')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #00ffff 100%);"></div>Teal</div>
+                <div class="theme-option" onclick="selectTheme('indigo')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #4169e1 100%);"></div>Indigo</div>
+                <div class="theme-option" onclick="selectTheme('fuchsia')"><div class="color-swatch" style="background: linear-gradient(135deg, #000 0%, #ff00ff 100%);"></div>Fuchsia</div>
             </div>
         </div>
 
         <div class="section">
             <h2>🖼️ Background</h2>
-            <p style="margin-bottom: 20px; color: rgba(0, 255, 0, 0.7);">Pick a background — applies across every page. Designs tint to your theme.</p>
             <div class="bg-upload">
                 <input type="text" id="bgUrl" placeholder="Enter image URL...">
-                <button onclick="setBackground()">Apply</button>
+                <button onclick="applyBackground()">Apply</button>
             </div>
         </div>
 
         <div class="section">
             <h2>👁️ Appearance</h2>
-            <p style="margin-bottom: 20px; color: rgba(0, 255, 0, 0.7);">Customize your visual experience</p>
             <div class="appearance-options">
-                <div class="appearance-option active" onclick="setAppearance('default')">🌙 Dark Mode (Default)</div>
-                <div class="appearance-option" onclick="setAppearance('compact')">📦 Compact Layout</div>
-                <div class="appearance-option" onclick="setAppearance('reduced')">⚡ Reduced Motion</div>
+                <div class="appearance-option" onclick="selectAppearance('default')">🌙 Dark Mode (Default)</div>
+                <div class="appearance-option" onclick="selectAppearance('compact')">📦 Compact Layout</div>
+                <div class="appearance-option" onclick="selectAppearance('reduced')">⚡ Reduced Motion</div>
             </div>
         </div>
+
+        <button class="save-btn" onclick="saveSettings()">💾 Save Settings</button>
     </div>
 
     <script>
-        function setTheme(theme) {
-            localStorage.setItem('theme', theme);
+        let selectedTheme = localStorage.getItem('theme') || 'amber';
+        let selectedAppearance = localStorage.getItem('appearance') || 'default';
+        let selectedBg = localStorage.getItem('background') || '';
+
+        function selectTheme(theme) {
+            selectedTheme = theme;
             document.querySelectorAll('.theme-option').forEach(el => el.classList.remove('active'));
             event.target.closest('.theme-option').classList.add('active');
-            parent.document.body.className = `theme-${theme}`;
         }
 
-        function setBackground() {
-            const url = document.getElementById('bgUrl').value;
-            if (url) {
-                localStorage.setItem('background', url);
-                parent.document.body.style.backgroundImage = `url('${url}')`;
-                parent.document.body.style.backgroundSize = 'cover';
-                parent.document.body.style.backgroundAttachment = 'fixed';
-            }
+        function applyBackground() {
+            selectedBg = document.getElementById('bgUrl').value;
         }
 
-        function setAppearance(mode) {
-            localStorage.setItem('appearance', mode);
+        function selectAppearance(mode) {
+            selectedAppearance = mode;
             document.querySelectorAll('.appearance-option').forEach(el => el.classList.remove('active'));
             event.target.closest('.appearance-option').classList.add('active');
         }
 
+        function saveSettings() {
+            localStorage.setItem('theme', selectedTheme);
+            localStorage.setItem('appearance', selectedAppearance);
+            localStorage.setItem('background', selectedBg);
+            
+            // Update parent window
+            parent.document.body.className = `theme-${selectedTheme}`;
+            if (selectedBg) {
+                parent.document.body.style.backgroundImage = `url('${selectedBg}')`;
+                parent.document.body.style.backgroundSize = 'cover';
+                parent.document.body.style.backgroundAttachment = 'fixed';
+            }
+            
+            alert('✅ Settings saved!');
+        }
+
         window.addEventListener('load', () => {
             const savedTheme = localStorage.getItem('theme') || 'amber';
-            document.querySelector(`[onclick="setTheme('${savedTheme}')"]`)?.classList.add('active');
+            const savedAppearance = localStorage.getItem('appearance') || 'default';
+            const savedBg = localStorage.getItem('background') || '';
+            
+            document.querySelector(`[onclick="selectTheme('${savedTheme}')"]`)?.classList.add('active');
+            document.querySelector(`[onclick="selectAppearance('${savedAppearance}')"]`)?.classList.add('active');
+            if (savedBg) {
+                document.getElementById('bgUrl').value = savedBg;
+            }
         });
     </script>
 </body>

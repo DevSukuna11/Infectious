@@ -1,6 +1,6 @@
 const pages = {
     home: 'home.html',
-    games: 'https://www.classicgames.online',
+    games: 'coming-soon.html',
     watch: 'https://www.youtube.com',
     apps: 'apps.html',
     music: 'https://open.spotify.com',
