@@ -14,24 +14,25 @@
             padding: 40px 20px;
         }
         .chat-message {
-            font-size: 2rem;
-            color: var(--orange);
+            font-size: 2.5rem;
+            color: var(--neon-green);
             text-align: center;
-            text-shadow: 0 0 20px rgba(255, 149, 0, 0.4);
+            text-shadow: 0 0 30px var(--neon-green);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="globe-icon">🌐</div>
+            <div class="globe-icon">🦠</div>
         </div>
         <div class="main-content">
             <header>
                 <div class="nav-bar">
                     <button class="nav-btn">‹</button>
                     <button class="nav-btn">›</button>
-                    <button class="nav-btn">⟳</button>
+                    <button class="nav-btn">🔄</button>
                     <button class="nav-btn">⌂</button>
                 </div>
                 <div class="url-bar">
@@ -39,13 +40,37 @@
                 </div>
                 <div class="nav-icons">
                     <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🧩</button>
+                    <button class="icon-btn">🧬</button>
                     <button class="settings-btn" id="settingsBtn">⚙</button>
                 </div>
             </header>
             <main class="chat-container">
                 <div class="chat-message">Can't create account yet till released</div>
             </main>
+        </div>
+    </div>
+    <div id="settingsPanel" class="settings-panel">
+        <div class="settings-content">
+            <h2>Infectious 🦠 Settings</h2>
+            <div class="settings-options">
+                <div class="setting-item">
+                    <label>Theme</label>
+                    <select>
+                        <option>Neon Green</option>
+                        <option>Neon Blue</option>
+                        <option>Neon Purple</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label>Homepage</label>
+                    <input type="text" value="https://infectious.local">
+                </div>
+                <div class="setting-item">
+                    <label>Clear Browsing Data</label>
+                    <button class="btn-settings">Clear</button>
+                </div>
+            </div>
+            <button id="closeSettings" class="close-btn">✕</button>
         </div>
     </div>
     <script src="script.js"></script>

@@ -16,43 +16,37 @@
         }
         .app-card {
             aspect-ratio: 1;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--orange);
+            background-color: rgba(0, 255, 0, 0.05);
+            border: 2px solid var(--neon-green);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 3rem;
+            font-size: 4rem;
             text-decoration: none;
-            color: var(--orange);
+            color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
         }
         .app-card:hover {
-            background-color: rgba(255, 149, 0, 0.1);
-            box-shadow: 0 0 20px rgba(255, 149, 0, 0.4);
+            background-color: rgba(0, 255, 0, 0.15);
+            box-shadow: 0 0 25px var(--neon-green);
             transform: scale(1.05);
-        }
-        .app-label {
-            position: absolute;
-            bottom: 20px;
-            color: var(--neon-green);
-            font-size: 0.9rem;
-            text-transform: capitalize;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="globe-icon">🌐</div>
+            <div class="globe-icon">🦠</div>
         </div>
         <div class="main-content">
             <header>
                 <div class="nav-bar">
                     <button class="nav-btn">‹</button>
                     <button class="nav-btn">›</button>
-                    <button class="nav-btn">⟳</button>
+                    <button class="nav-btn">🔄</button>
                     <button class="nav-btn">⌂</button>
                 </div>
                 <div class="url-bar">
@@ -60,19 +54,43 @@
                 </div>
                 <div class="nav-icons">
                     <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🧩</button>
+                    <button class="icon-btn">🧬</button>
                     <button class="settings-btn" id="settingsBtn">⚙</button>
                 </div>
             </header>
             <main class="home-page">
                 <div class="apps-grid">
-                    <a href="https://github.com" target="_blank" class="app-card">🐙</a>
+                    <a href="https://github.com" target="_blank" class="app-card">👾</a>
                     <a href="https://instagram.com" target="_blank" class="app-card">📷</a>
                     <a href="https://twitter.com" target="_blank" class="app-card">𝕏</a>
                     <a href="https://snapchat.com" target="_blank" class="app-card">👻</a>
                     <a href="https://discord.com" target="_blank" class="app-card">💬</a>
                 </div>
             </main>
+        </div>
+    </div>
+    <div id="settingsPanel" class="settings-panel">
+        <div class="settings-content">
+            <h2>Infectious 🦠 Settings</h2>
+            <div class="settings-options">
+                <div class="setting-item">
+                    <label>Theme</label>
+                    <select>
+                        <option>Neon Green</option>
+                        <option>Neon Blue</option>
+                        <option>Neon Purple</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label>Homepage</label>
+                    <input type="text" value="https://infectious.local">
+                </div>
+                <div class="setting-item">
+                    <label>Clear Browsing Data</label>
+                    <button class="btn-settings">Clear</button>
+                </div>
+            </div>
+            <button id="closeSettings" class="close-btn">✕</button>
         </div>
     </div>
     <script src="script.js"></script>

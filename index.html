@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="globe-icon">🌐</div>
+            <div class="globe-icon">🦠</div>
         </div>
         <div class="main-content">
             <header>
                 <div class="nav-bar">
                     <button class="nav-btn">‹</button>
                     <button class="nav-btn">›</button>
-                    <button class="nav-btn">⟳</button>
+                    <button class="nav-btn">🔄</button>
                     <button class="nav-btn">⌂</button>
                 </div>
                 <div class="url-bar">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="nav-icons">
                     <button class="icon-btn">⛶</button>
-                    <button class="icon-btn">🧩</button>
+                    <button class="icon-btn">🧬</button>
                     <button class="settings-btn" id="settingsBtn">⚙</button>
                 </div>
             </header>
@@ -39,35 +39,38 @@
                     </div>
                 </div>
                 <div class="shortcuts-section">
-                    <a href="https://www.youtube.com" target="_blank" class="shortcut">
+                    <a href="index.html" class="shortcut">
+                        <div class="shortcut-icon">🏠</div>
+                        <div class="shortcut-label">home</div>
+                    </a>
+                    <a href="games.html" class="shortcut">
+                        <div class="shortcut-icon">🎮</div>
+                        <div class="shortcut-label">games</div>
+                    </a>
+                    <a href="watch.html" class="shortcut">
                         <div class="shortcut-icon">▶</div>
-                        <div class="shortcut-label">youtube</div>
+                        <div class="shortcut-label">watch</div>
                     </a>
-                    <a href="https://github.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">🐙</div>
-                        <div class="shortcut-label">github</div>
+                    <a href="apps.html" class="shortcut">
+                        <div class="shortcut-icon">📱</div>
+                        <div class="shortcut-label">apps</div>
                     </a>
-                    <a href="https://discord.com" target="_blank" class="shortcut">
+                    <a href="music.html" class="shortcut">
+                        <div class="shortcut-icon">🎧</div>
+                        <div class="shortcut-label">music</div>
+                    </a>
+                    <a href="chat.html" class="shortcut">
                         <div class="shortcut-icon">💬</div>
-                        <div class="shortcut-label">discord</div>
+                        <div class="shortcut-label">chat</div>
                     </a>
-                    <a href="https://twitter.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">𝕏</div>
-                        <div class="shortcut-label">twitter</div>
-                    </a>
-                    <a href="https://reddit.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">🔴</div>
-                        <div class="shortcut-label">reddit</div>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" class="shortcut">
-                        <div class="shortcut-icon">📷</div>
-                        <div class="shortcut-label">instagram</div>
+                    <a href="browse.html" class="shortcut">
+                        <div class="shortcut-icon">🌐</div>
+                        <div class="shortcut-label">browse</div>
                     </a>
                 </div>
             </main>
         </div>
     </div>
-
     <div id="settingsPanel" class="settings-panel">
         <div class="settings-content">
             <h2>Infectious 🦠 Settings</h2>
@@ -77,7 +80,7 @@
                     <select>
                         <option>Neon Green</option>
                         <option>Neon Blue</option>
-                        <option>Neon Pink</option>
+                        <option>Neon Purple</option>
                     </select>
                 </div>
                 <div class="setting-item">
@@ -92,7 +95,6 @@
             <button id="closeSettings" class="close-btn">✕</button>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
