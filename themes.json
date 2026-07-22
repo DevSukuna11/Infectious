@@ -1,0 +1,55 @@
+{
+  "themes": {
+    "amber": {
+      "primary": "#ffb000",
+      "primaryDark": "#ff9500",
+      "name": "Amber"
+    },
+    "cyan": {
+      "primary": "#00d4ff",
+      "primaryDark": "#00b8e6",
+      "name": "Cyan"
+    },
+    "violet": {
+      "primary": "#b000ff",
+      "primaryDark": "#9500e6",
+      "name": "Violet"
+    },
+    "emerald": {
+      "primary": "#00ff7f",
+      "primaryDark": "#00cc66",
+      "name": "Emerald"
+    },
+    "rose": {
+      "primary": "#ff1493",
+      "primaryDark": "#cc0066",
+      "name": "Rose"
+    },
+    "slate": {
+      "primary": "#c0c0c0",
+      "primaryDark": "#a9a9a9",
+      "name": "Slate"
+    },
+    "crimson": {
+      "primary": "#ff0000",
+      "primaryDark": "#cc0000",
+      "name": "Crimson"
+    },
+    "teal": {
+      "primary": "#00ffff",
+      "primaryDark": "#00cccc",
+      "name": "Teal"
+    },
+    "indigo": {
+      "primary": "#4169e1",
+      "primaryDark": "#3a5bc7",
+      "name": "Indigo"
+    },
+    "fuchsia": {
+      "primary": "#ff00ff",
+      "primaryDark": "#cc00cc",
+      "name": "Fuchsia"
+    }
+  },
+  "defaultTheme": "emerald"
+}

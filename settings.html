@@ -15,6 +15,7 @@
         .settings-container {
             max-width: 1200px;
             margin: 0 auto;
+            animation: popIn 0.5s ease-out;
         }
         h1 {
             margin-bottom: 30px;
@@ -86,12 +87,12 @@
             background-color: #00ff00;
             color: #000;
         }
-        .appearance-options {
+        .particles-options {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        .appearance-option {
+        .particle-option {
             padding: 12px;
             border: 1px solid #00ff00;
             border-radius: 6px;
@@ -99,10 +100,10 @@
             background-color: rgba(0, 255, 0, 0.05);
             transition: all 0.3s ease;
         }
-        .appearance-option:hover {
+        .particle-option:hover {
             background-color: rgba(0, 255, 0, 0.15);
         }
-        .appearance-option.active {
+        .particle-option.active {
             background-color: #00ff00;
             color: #000;
         }
@@ -122,6 +123,16 @@
             background-color: #00ff00;
             color: #000;
             box-shadow: 0 0 20px #00ff00;
+        }
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
 </head>
@@ -154,11 +165,15 @@
         </div>
 
         <div class="section">
-            <h2>👁️ Appearance</h2>
-            <div class="appearance-options">
-                <div class="appearance-option" onclick="selectAppearance('default')">🌙 Dark Mode (Default)</div>
-                <div class="appearance-option" onclick="selectAppearance('compact')">📦 Compact Layout</div>
-                <div class="appearance-option" onclick="selectAppearance('reduced')">⚡ Reduced Motion</div>
+            <h2>✨ Particles</h2>
+            <div class="particles-options">
+                <div class="particle-option" onclick="selectParticles('snowdots')">❄ Falling Snow</div>
+                <div class="particle-option" onclick="selectParticles('stars')">✨ Stars</div>
+                <div class="particle-option" onclick="selectParticles('hearts-red')">❤ Red Hearts</div>
+                <div class="particle-option" onclick="selectParticles('hearts-purple')">💜 Purple Hearts</div>
+                <div class="particle-option" onclick="selectParticles('hearts-blue')">💙 Blue Hearts</div>
+                <div class="particle-option" onclick="selectParticles('hearts-green')">💚 Green Hearts</div>
+                <div class="particle-option" onclick="selectParticles('off')">🚫 Off</div>
             </div>
         </div>
 
@@ -166,8 +181,8 @@
     </div>
 
     <script>
-        let selectedTheme = localStorage.getItem('theme') || 'amber';
-        let selectedAppearance = localStorage.getItem('appearance') || 'default';
+        let selectedTheme = localStorage.getItem('theme') || 'emerald';
+        let selectedParticles = localStorage.getItem('particles') || 'snowdots';
         let selectedBg = localStorage.getItem('background') || '';
 
         function selectTheme(theme) {
@@ -180,16 +195,17 @@
             selectedBg = document.getElementById('bgUrl').value;
         }
 
-        function selectAppearance(mode) {
-            selectedAppearance = mode;
-            document.querySelectorAll('.appearance-option').forEach(el => el.classList.remove('active'));
-            event.target.closest('.appearance-option').classList.add('active');
+        function selectParticles(particle) {
+            selectedParticles = particle;
+            document.querySelectorAll('.particle-option').forEach(el => el.classList.remove('active'));
+            event.target.closest('.particle-option').classList.add('active');
         }
 
         function saveSettings() {
             localStorage.setItem('theme', selectedTheme);
-            localStorage.setItem('appearance', selectedAppearance);
+            localStorage.setItem('particles', selectedParticles);
             localStorage.setItem('background', selectedBg);
+            localStorage.setItem('particlesEnabled', selectedParticles !== 'off');
             
             // Update parent window
             parent.document.body.className = `theme-${selectedTheme}`;
@@ -200,15 +216,16 @@
             }
             
             alert('✅ Settings saved!');
+            location.reload();
         }
 
         window.addEventListener('load', () => {
-            const savedTheme = localStorage.getItem('theme') || 'amber';
-            const savedAppearance = localStorage.getItem('appearance') || 'default';
+            const savedTheme = localStorage.getItem('theme') || 'emerald';
+            const savedParticles = localStorage.getItem('particles') || 'snowdots';
             const savedBg = localStorage.getItem('background') || '';
             
             document.querySelector(`[onclick="selectTheme('${savedTheme}')"]`)?.classList.add('active');
-            document.querySelector(`[onclick="selectAppearance('${savedAppearance}')"]`)?.classList.add('active');
+            document.querySelector(`[onclick="selectParticles('${savedParticles}')"]`)?.classList.add('active');
             if (savedBg) {
                 document.getElementById('bgUrl').value = savedBg;
             }

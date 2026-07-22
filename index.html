@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-emerald">
+    <div id="particles-container" class="particles-container"></div>
     <div class="container">
         <header>
             <div class="nav-buttons">
@@ -16,7 +17,7 @@
                 <button class="nav-btn" onclick="goHome()">⌂</button>
             </div>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Infectious🦠://NewTAB" onkeypress="handleSearch(event)">
+                <input type="text" id="searchInput" placeholder="Infectious🦠://Search" onkeypress="handleSearch(event)">
             </div>
             <div class="icon-btns">
                 <button class="icon-btn">⛶</button>
@@ -24,9 +25,7 @@
                 <button class="icon-btn" onclick="openSettings()">⚙</button>
             </div>
         </header>
-        <div class="main-content">
-            <iframe id="mainFrame" src="about:blank"></iframe>
-        </div>
+        <div class="main-content" id="mainFrame"></div>
     </div>
 
     <div class="floating-menu">

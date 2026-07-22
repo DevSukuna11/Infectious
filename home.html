@@ -19,6 +19,7 @@
             text-align: center;
             max-width: 900px;
             padding: 40px 20px;
+            animation: popIn 0.5s ease-out;
         }
         h1 {
             font-size: 5rem;
@@ -90,6 +91,16 @@
         .shortcut:hover .shortcut-label {
             color: #00ff00;
         }
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -100,27 +111,27 @@
             <input type="text" placeholder="Infectious🦠://NewTAB">
         </div>
         <div class="shortcuts">
-            <a href="javascript:parent.loadPage('https://open.spotify.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://monochrome.tf')" class="shortcut">
                 <div class="shortcut-icon">🎧</div>
-                <div class="shortcut-label">Spotify</div>
+                <div class="shortcut-label">Monochrome</div>
             </a>
-            <a href="javascript:parent.loadPage('https://youtube.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://youtube.com')" class="shortcut">
                 <div class="shortcut-icon">▶</div>
                 <div class="shortcut-label">YouTube</div>
             </a>
-            <a href="javascript:parent.loadPage('https://github.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://github.com')" class="shortcut">
                 <div class="shortcut-icon">🐙</div>
                 <div class="shortcut-label">GitHub</div>
             </a>
-            <a href="javascript:parent.loadPage('https://discord.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://discord.com')" class="shortcut">
                 <div class="shortcut-icon">💬</div>
                 <div class="shortcut-label">Discord</div>
             </a>
-            <a href="javascript:parent.loadPage('https://twitter.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://twitter.com')" class="shortcut">
                 <div class="shortcut-icon">𝕏</div>
                 <div class="shortcut-label">Twitter</div>
             </a>
-            <a href="javascript:parent.loadPage('https://reddit.com')" class="shortcut">
+            <a href="javascript:parent.parent.loadPage('https://reddit.com')" class="shortcut">
                 <div class="shortcut-icon">🔴</div>
                 <div class="shortcut-label">Reddit</div>
             </a>

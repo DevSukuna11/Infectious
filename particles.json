@@ -1,0 +1,41 @@
+{
+  "particles": {
+    "snowdots": {
+      "name": "Falling Snow",
+      "emoji": "❄",
+      "color": "#ffffff",
+      "speed": "medium"
+    },
+    "stars": {
+      "name": "Stars",
+      "emoji": "✨",
+      "color": "#ffff00",
+      "speed": "slow"
+    },
+    "hearts-red": {
+      "name": "Red Hearts",
+      "emoji": "❤",
+      "color": "#ff0000",
+      "speed": "medium"
+    },
+    "hearts-purple": {
+      "name": "Purple Hearts",
+      "emoji": "💜",
+      "color": "#b000ff",
+      "speed": "medium"
+    },
+    "hearts-blue": {
+      "name": "Blue Hearts",
+      "emoji": "💙",
+      "color": "#0099ff",
+      "speed": "medium"
+    },
+    "hearts-green": {
+      "name": "Green Hearts",
+      "emoji": "💚",
+      "color": "#00ff00",
+      "speed": "medium"
+    }
+  },
+  "defaultParticle": "snowdots"
+}
